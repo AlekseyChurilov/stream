@@ -18,7 +18,7 @@ def remove_incor_symbols(text_incor):
     
     for x in text_incor:  
         if x in marks:  
-            text_incor_ = text_incor.replace(x, "")
+            text_incor_ = text_incor.replace(x, " ")
     
     cor_symbols = [" "]
 
