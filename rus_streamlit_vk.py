@@ -16,7 +16,7 @@ def remove_incor_symbols(text_incor):
 
     cor_symbols = [" "]
 
-    for i in range(ord('а'), ord('я')):
+    for i in range(ord('а'), ord('я')+1):
         cor_symbols.append(chr(i))
 
     text_cor = ""
