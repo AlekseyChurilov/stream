@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import matplotlib
 from wordcloud import WordCloud
 import vk  # импорт специализированной библиотеки для парсинга текста
+import string
+string.punctuation
+# '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 
 matplotlib.use("Agg")
 
@@ -14,10 +17,10 @@ def remove_incor_symbols(text_incor):
 
     text_incor = text_incor.lower()
 
-    marks = '''!()-[]{};?@#$%:'"\,./^&amp;*_'''
+    # marks = '''!()-[]{};?@#$%:'"\,./^&amp;*_'''
     
     for x in text_incor:  
-        if x in marks:  
+        if x in string.punctuation:  
             text_incor_ = text_incor.replace(x, " ")
     
     cor_symbols = [" "]
