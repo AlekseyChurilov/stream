@@ -14,6 +14,12 @@ def remove_incor_symbols(text_incor):
 
     text_incor = text_incor.lower()
 
+    marks = '''!()-[]{};?@#$%:'"\,./^&amp;*_'''
+    
+    for x in text_incor:  
+    if x in marks:  
+        text_incor_ = text_incor.replace(x, "")
+    
     cor_symbols = [" "]
 
     for i in range(ord('а'), ord('я')+1):
@@ -21,7 +27,7 @@ def remove_incor_symbols(text_incor):
 
     text_cor = ""
 
-    for symbol in text_incor:
+    for symbol in text_incor_:
         if symbol in cor_symbols:
             text_cor += symbol
 
