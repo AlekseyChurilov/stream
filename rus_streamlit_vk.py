@@ -5,23 +5,28 @@ import matplotlib.pyplot as plt
 import matplotlib
 from wordcloud import WordCloud
 import vk  # импорт специализированной библиотеки для парсинга текста
-import string
-string.punctuation
-# '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+
 
 matplotlib.use("Agg")
+
+
+def replacement_punc_to_space(textt):
+    
+    punc_list = '.;:!?/\,#@$&)(\'"'
+    replacement = ' '*len(punc_list)
+    
+    textt = textt.translate(str.maketrans(punc_list, replacement))
+    
+    return textt
 
 
 def remove_incor_symbols(text_incor):
     # функция, оставляющая в строке только русские буквы и пробелы
 
-    text_incor = text_incor.lower()
-
-    # marks = '''!()-[]{};?@#$%:'"\,./^&amp;*_'''
+    text_incor = replacement_punc_to_space(text_incor)
     
-    for x in text_incor:  
-        if x in string.punctuation:  
-            text_incor_ = text_incor.replace(x, " ")
+    text_incor = text_incor.lower()
+              
     
     cor_symbols = [" "]
 
@@ -30,7 +35,7 @@ def remove_incor_symbols(text_incor):
 
     text_cor = ""
 
-    for symbol in text_incor_:
+    for symbol in text_incor:
         if symbol in cor_symbols:
             text_cor += symbol
 
